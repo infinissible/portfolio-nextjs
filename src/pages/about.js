@@ -6,6 +6,8 @@ import React, { useEffect, useRef } from 'react';
 import profilePic from '../../public/images/profile/developer-pic-2.jpg';
 import { useInView, useMotionValue, useSpring } from 'framer-motion';
 import Skills from '@/components/Skills';
+import Experience from '@/components/Experience';
+import Education from '@/components/Education';
 
 const AnimatedNumbers = ({ value }) => {
   const ref = useRef(null);
@@ -67,7 +69,7 @@ const about = () => {
               </p>
             </div>
             <div className='col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-8'>
-              <div className='absolute top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark'></div>
+              <div className='absolute top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark' />
               <Image
                 src={profilePic}
                 alt='Jinventor'
@@ -104,6 +106,8 @@ const about = () => {
             </div>
           </div>
           <Skills />
+          <Experience />
+          <Education />
         </Layout>
       </main>
     </>
