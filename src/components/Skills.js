@@ -12,6 +12,7 @@ import node from '../../public/images/svgs/node.svg';
 import mongodb from '../../public/images/svgs/mongodb.svg';
 import mysql from '../../public/images/svgs/mysql.svg';
 import graphql from '../../public/images/svgs/graphql.svg';
+import react from '../../public/images/svgs/react.svg';
 
 const Skill = ({ name, src, alt }) => {
   return (
@@ -38,6 +39,7 @@ const Skills = () => {
           </span>
           <Skill name={'JavaScript'} alt={'JavaScript Icon'} src={js} />
           <Skill name={'TypeScript'} alt={'TypeScript Icon'} src={ts} />
+          <Skill name={'React'} alt={'React Icon'} src={react} />
           <Skill name={'NestJS'} alt={'NestJS Icon'} src={next} />
         </div>
         <div className='col-span-3 sm:col-span-1'>

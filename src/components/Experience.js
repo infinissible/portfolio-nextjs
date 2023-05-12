@@ -21,9 +21,9 @@ const Details = ({ position, company, companyLink, time, address, work }) => {
           <a
             href={companyLink}
             target={'_blank'}
-            className='text-primary dark:text-primaryDark capitalize'
+            className='text-primary dark:text-primaryDark capitalize text-xl'
           >
-            @{company}
+            <br /> @{company}
           </a>
         </h3>
         <span className='capitalize font-medium text-dark/75 dark:text-light/75 xs:text-sm'>
@@ -57,57 +57,30 @@ const Experience = () => {
 
         <ul className='w-full flex flex-col items-start justify-between ml-4 xs:ml-2'>
           <Details
-            position='Software Engineer'
-            company='Google'
-            companyLink='www.google.com'
-            time='2022-Present'
-            address='Mountain View, CA'
-            work="Worked on a team responsible for developing new features for Google's search engine, including improving the accuracy and relevance of search results and developing new tools for data analysis and visualization."
+            position='Freelance'
+            company='Self-employed'
+            companyLink='https://jinventor.com'
+            time='Aug 2022 - Pesent'
+            address='Riverside, CA'
+            work='Developed a full stack application with REST APIs using a React, Express, Node, MongoDB, Java, Spring Boot, SQL, NoSQL databases'
           />
 
           <Details
-            position='Software Engineer'
-            company='Google'
-            companyLink='www.google.com'
-            time='2022-Present'
-            address='Mountain View, CA'
-            work="Worked on a team responsible for developing new features for Google's search engine, including improving the accuracy and relevance of search results and developing new tools for data analysis and visualization."
+            position='Computer Consultant'
+            company='Baanyan Software Services, Inc.'
+            companyLink='www.baanyan.com'
+            time='Aug 2022 - May 2023'
+            address='Edison, NJ'
+            work='Trained with Java, Spring Boot, Spring MVC, Spring Hibernate, Spring JDBC, Spring IOC, Spring Security, Web Services (SOAP and REST API), Microservices (Docker and Kubernetes), distributed messaging system (Kafka), CI/CD pipeline (Jenkins), cloud platform (Spring Cloud and AWS Cloud) and unit testing (JUnit and Mockito)'
           />
 
           <Details
-            position='Software Engineer'
-            company='Google'
-            companyLink='www.google.com'
+            position='Postdoctoral Researcher'
+            company='Winston Chung Global Energy Center'
+            companyLink='www.ucr.edu'
             time='2022-Present'
-            address='Mountain View, CA'
-            work="Worked on a team responsible for developing new features for Google's search engine, including improving the accuracy and relevance of search results and developing new tools for data analysis and visualization."
-          />
-
-          <Details
-            position='Software Engineer'
-            company='Google'
-            companyLink='www.google.com'
-            time='2022-Present'
-            address='Mountain View, CA'
-            work="Worked on a team responsible for developing new features for Google's search engine, including improving the accuracy and relevance of search results and developing new tools for data analysis and visualization."
-          />
-
-          <Details
-            position='Software Engineer'
-            company='Google'
-            companyLink='www.google.com'
-            time='2022-Present'
-            address='Mountain View, CA'
-            work="Worked on a team responsible for developing new features for Google's search engine, including improving the accuracy and relevance of search results and developing new tools for data analysis and visualization."
-          />
-
-          <Details
-            position='Software Engineer'
-            company='Google'
-            companyLink='www.google.com'
-            time='2022-Present'
-            address='Mountain View, CA'
-            work="Worked on a team responsible for developing new features for Google's search engine, including improving the accuracy and relevance of search results and developing new tools for data analysis and visualization."
+            address='Riverside, CA'
+            work='Analyzed the energy storage systems such as lithium-ion batteries and solar cells to improve the energy capacity and efficiency'
           />
         </ul>
       </div>
