@@ -4,11 +4,9 @@ import Head from 'next/head';
 import Image from 'next/image';
 import React, { useEffect, useRef } from 'react';
 import profilePic from '../../public/images/profile/pic-2.png';
-import { useInView, useMotionValue, useSpring } from 'framer-motion';
 import Skills from '@/components/Skills';
 import Experience from '@/components/Experience';
 import Education from '@/components/Education';
-import TransitionEffect from '@/components/TransitionEffect';
 
 const about = () => {
   return (
@@ -17,7 +15,7 @@ const about = () => {
         <title>Jinventor | About Page</title>
         <meta name='description' content='any description' />
       </Head>
-      {/* <TransitionEffect /> */}
+
       <main className='flex w-full flex-col items-center justify-center dark:text-light max-w-7xl mx-auto'>
         <Layout className='pt-16'>
           <AnimatedText
