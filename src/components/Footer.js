@@ -17,13 +17,13 @@ const Footer = () => {
           </Link>
         </div>
 
-        <Link
+        {/* <Link
           href='https://jinventor.com'
           target={'_blank'}
           className='underline underline-offset-2'
         >
           Say hello
-        </Link>
+        </Link> */}
       </Layout>
     </footer>
   );

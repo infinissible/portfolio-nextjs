@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Logo from './Logo';
 import { useRouter } from 'next/router';
 import {
@@ -13,6 +13,8 @@ import {
 } from './Icons';
 import { motion } from 'framer-motion';
 import useThemeSwitcher from './hooks/useThemeSwitcher';
+import lightBulb from '../../public/images/svgs/miscellaneous_icons_1.svg';
+import Image from 'next/image';
 
 const CustomLink = ({ href, title, className = '' }) => {
   const router = useRouter();
@@ -56,6 +58,8 @@ const CustomMobileLink = ({ href, title, className = '', toggle }) => {
 };
 
 const NavBar = () => {
+  const ref = useRef();
+
   const [mode, setMode] = useThemeSwitcher();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -63,6 +67,26 @@ const NavBar = () => {
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
+
+  useOnClickOutside(ref, () => setIsOpen(false));
+
+  function useOnClickOutside(ref, handler) {
+    useEffect(() => {
+      const listener = (event) => {
+        if (!ref.current || ref.current.contains(event.target)) {
+          return;
+        }
+        handler(event);
+      };
+      document.addEventListener('mousedown', listener);
+      document.addEventListener('touchstart', listener);
+
+      return () => {
+        document.removeEventListener('mousedown', listener);
+        document.removeEventListener('touchstart', listener);
+      };
+    }, [ref, handler]);
+  }
 
   return (
     <header className='w-full px-32 py-8 font-medium flex items-center justify-between dark:text-light relative z-10 lg:px-16 md:px-12 sm:px-8'>
@@ -87,16 +111,20 @@ const NavBar = () => {
         ></span>
       </button>
 
+      <Link href='/' className='left-[50%] absolute lg:relative lg:left-[0%]'>
+        <Image src={lightBulb} alt='Jinventor' className='w-6 h-auto mr-4' />
+      </Link>
+
       <div className='w-full flex justify-between items-center lg:hidden'>
         <nav>
-          <CustomLink href='/' title='Home' className='mr-4' />
+          <CustomLink href='/' title='Home' className='mx-4' />
           <CustomLink href='/about' title='About' className='mx-4' />
           <CustomLink href='/projects' title='Projects' className='mx-4' />
           <CustomLink href='/articles' title='Articles' className='ml-4' />
         </nav>
 
         <nav className='flex items-center justify-center flex-wrap'>
-          <motion.a
+          {/* <motion.a
             href='https://twitter.com'
             target={'_blank'}
             whileHover={{ y: -2 }}
@@ -104,9 +132,9 @@ const NavBar = () => {
             className='w-6 mr-3'
           >
             <TwitterIcon />
-          </motion.a>
+          </motion.a> */}
           <motion.a
-            href='https://'
+            href='https://github.com/infinissible'
             target={'_blank'}
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.9 }}
@@ -115,7 +143,7 @@ const NavBar = () => {
             <GithubIcon />
           </motion.a>
           <motion.a
-            href='https://'
+            href='https://www.linkedin.com/in/jinlee0303/'
             target={'_blank'}
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.9 }}
@@ -123,7 +151,7 @@ const NavBar = () => {
           >
             <LinkedInIcon />
           </motion.a>
-          <motion.a
+          {/* <motion.a
             href='https//'
             target={'_blank'}
             whileHover={{ y: -2 }}
@@ -140,7 +168,7 @@ const NavBar = () => {
             className='w-6 ml-3'
           >
             <DribbbleIcon />
-          </motion.a>
+          </motion.a> */}
           <button
             onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
             className={`ml-3 flex items-center justify-center rounded-full p-1 ${
@@ -158,6 +186,7 @@ const NavBar = () => {
 
       {isOpen ? (
         <motion.div
+          ref={ref}
           initial={{ scale: 0, opacity: 0, x: '-50%', y: '-50%' }}
           animate={{ scale: 1, opacity: 1 }}
           className='min-w-[70vw] flex flex-col justify-between z-30 items-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-32'
@@ -190,7 +219,7 @@ const NavBar = () => {
           </nav>
 
           <nav className='flex items-center justify-center flex-wrap mt-2'>
-            <motion.a
+            {/* <motion.a
               href='https://twitter.com'
               target={'_blank'}
               whileHover={{ y: -2 }}
@@ -198,7 +227,7 @@ const NavBar = () => {
               className='w-6 mr-3 sm:mx-1'
             >
               <TwitterIcon />
-            </motion.a>
+            </motion.a> */}
             <motion.a
               href='https://'
               target={'_blank'}
@@ -217,7 +246,7 @@ const NavBar = () => {
             >
               <LinkedInIcon />
             </motion.a>
-            <motion.a
+            {/* <motion.a
               href='https//'
               target={'_blank'}
               whileHover={{ y: -2 }}
@@ -225,8 +254,8 @@ const NavBar = () => {
               className='w-6 mx-3 bg-light rounded-full sm:mx-1'
             >
               <PinterestIcon />
-            </motion.a>
-            <motion.a
+            </motion.a> */}
+            {/* <motion.a
               href='https://'
               target={'_blank'}
               whileHover={{ y: -2 }}
@@ -234,7 +263,7 @@ const NavBar = () => {
               className='w-6 ml-3 sm:mx-1'
             >
               <DribbbleIcon />
-            </motion.a>
+            </motion.a> */}
             <button
               onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
               className={`ml-3 flex items-center justify-center rounded-full p-1 ${
@@ -251,9 +280,9 @@ const NavBar = () => {
         </motion.div>
       ) : null}
 
-      <div className='absolute left-[50%] top-2 translate-x-[-50%]'>
+      {/* <div className='absolute left-[50%] top-2 translate-x-[-50%]'>
         <Logo />
-      </div>
+      </div> */}
     </header>
   );
 };
