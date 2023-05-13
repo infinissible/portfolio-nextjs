@@ -2,18 +2,10 @@ import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
 import Logo from './Logo';
 import { useRouter } from 'next/router';
-import {
-  TwitterIcon,
-  DribbbleIcon,
-  GithubIcon,
-  LinkedInIcon,
-  PinterestIcon,
-  SunIcon,
-  MoonIcon,
-} from './Icons';
+import { GithubIcon, LinkedInIcon, SunIcon, MoonIcon } from './Icons';
 import { motion } from 'framer-motion';
 import useThemeSwitcher from './hooks/useThemeSwitcher';
-import lightBulb from '../../public/images/svgs/miscellaneous_icons_1.svg';
+import lightBulb from '../../public/images/Icons/bulb.png';
 import Image from 'next/image';
 
 const CustomLink = ({ href, title, className = '' }) => {
@@ -112,7 +104,7 @@ const NavBar = () => {
       </button>
 
       <Link href='/' className='left-[50%] absolute lg:relative lg:left-[0%]'>
-        <Image src={lightBulb} alt='Jinventor' className='w-6 h-auto mr-4' />
+        <Image src={lightBulb} alt='Jinventor' className='w-10 h-auto mr-4' />
       </Link>
 
       <div className='w-full flex justify-between items-center lg:hidden'>
@@ -124,15 +116,6 @@ const NavBar = () => {
         </nav>
 
         <nav className='flex items-center justify-center flex-wrap'>
-          {/* <motion.a
-            href='https://twitter.com'
-            target={'_blank'}
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.9 }}
-            className='w-6 mr-3'
-          >
-            <TwitterIcon />
-          </motion.a> */}
           <motion.a
             href='https://github.com/infinissible'
             target={'_blank'}
@@ -151,24 +134,7 @@ const NavBar = () => {
           >
             <LinkedInIcon />
           </motion.a>
-          {/* <motion.a
-            href='https//'
-            target={'_blank'}
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.9 }}
-            className='w-6 mx-3 bg-light rounded-full'
-          >
-            <PinterestIcon />
-          </motion.a>
-          <motion.a
-            href='https://'
-            target={'_blank'}
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.9 }}
-            className='w-6 ml-3'
-          >
-            <DribbbleIcon />
-          </motion.a> */}
+
           <button
             onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
             className={`ml-3 flex items-center justify-center rounded-full p-1 ${
@@ -219,15 +185,6 @@ const NavBar = () => {
           </nav>
 
           <nav className='flex items-center justify-center flex-wrap mt-2'>
-            {/* <motion.a
-              href='https://twitter.com'
-              target={'_blank'}
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.9 }}
-              className='w-6 mr-3 sm:mx-1'
-            >
-              <TwitterIcon />
-            </motion.a> */}
             <motion.a
               href='https://'
               target={'_blank'}
@@ -246,24 +203,7 @@ const NavBar = () => {
             >
               <LinkedInIcon />
             </motion.a>
-            {/* <motion.a
-              href='https//'
-              target={'_blank'}
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.9 }}
-              className='w-6 mx-3 bg-light rounded-full sm:mx-1'
-            >
-              <PinterestIcon />
-            </motion.a> */}
-            {/* <motion.a
-              href='https://'
-              target={'_blank'}
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.9 }}
-              className='w-6 ml-3 sm:mx-1'
-            >
-              <DribbbleIcon />
-            </motion.a> */}
+
             <button
               onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
               className={`ml-3 flex items-center justify-center rounded-full p-1 ${
@@ -279,10 +219,6 @@ const NavBar = () => {
           </nav>
         </motion.div>
       ) : null}
-
-      {/* <div className='absolute left-[50%] top-2 translate-x-[-50%]'>
-        <Logo />
-      </div> */}
     </header>
   );
 };

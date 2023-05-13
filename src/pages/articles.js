@@ -10,7 +10,6 @@ import { motion, useMotionValue } from 'framer-motion';
 import article3 from '../../public/images/articles/create modal component in react using react portals.png';
 import article4 from '../../public/images/articles/form validation in reactjs using custom react hook.png';
 import article5 from '../../public/images/articles/smooth scrolling in reactjs.png';
-import TransitionEffect from '@/components/TransitionEffect';
 
 const FramerImage = motion(Image);
 
@@ -109,12 +108,11 @@ const articles = () => {
         <title>Jinventor | Articles Page</title>
         <meta name='description' content='any description' />
       </Head>
-      {/* <TransitionEffect /> */}
 
       <main className='w-full mb-16 flex flex-col items-center justify-center overflow-hidden dark:text-light'>
         <Layout className='pt-16'>
           <AnimatedText
-            text='Words Can Change The World!'
+            text='Technical Insights'
             className='mb-16 xl:!text-7xl lg:!text-7xl sm:mb-8 sm:!text-6xl xs:!text-4xl'
           />
           <ul className='grid grid-cols-2 gap-16 lg:gap-8 md:gap-y-16 md:grid-cols-1'>
@@ -141,40 +139,16 @@ const articles = () => {
           </h2>
           <ul>
             <Article
-              title='Form Validation In Reactjs: Build A Reusable Custom Hook For Inputs And Error Handling'
+              title='Build A Custom Pagination Component In Reactjs From Scratch'
               date='May 8, 2023'
               link='/'
-              img={article3}
+              img={article1}
             />
             <Article
               title='Form Validation In Reactjs: Build A Reusable Custom Hook For Inputs And Error Handling'
               date='May 8, 2023'
               link='/'
-              img={article4}
-            />
-            <Article
-              title='Form Validation In Reactjs: Build A Reusable Custom Hook For Inputs And Error Handling'
-              date='May 8, 2023'
-              link='/'
-              img={article5}
-            />
-            <Article
-              title='Form Validation In Reactjs: Build A Reusable Custom Hook For Inputs And Error Handling'
-              date='May 8, 2023'
-              link='/'
-              img={article3}
-            />
-            <Article
-              title='Form Validation In Reactjs: Build A Reusable Custom Hook For Inputs And Error Handling'
-              date='May 8, 2023'
-              link='/'
-              img={article3}
-            />
-            <Article
-              title='Form Validation In Reactjs: Build A Reusable Custom Hook For Inputs And Error Handling'
-              date='May 8, 2023'
-              link='/'
-              img={article3}
+              img={article2}
             />
           </ul>
         </Layout>
