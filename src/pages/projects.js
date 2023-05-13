@@ -143,7 +143,7 @@ const Project = ({ title, type, summary, img, link, github, props }) => {
           ))}
         </div>
         <div className='w-full mt-2 flex items-center justify-between'>
-          <Link href={github} target='_blank' className='w-8 md:w-6'>
+          <Link href={github} target='_blank' className='w-10 md:w-6'>
             <GithubIcon className='hover:scale-[1.1] transition-all' />
           </Link>
           <Link
@@ -185,7 +185,7 @@ const projects = () => {
       <main className='w-full mb-16 flex flex-col items-center justify-center dark:text-light'>
         <Layout className='pt-16'>
           <AnimatedText
-            text='Imagination Trumps Knowledge!'
+            text='Simple, Creation, Modern!'
             className='mb-16 xl:!text-7xl lg:!text-7xl sm:mb-8 sm:!text-6xl xs:!text-4xl'
           />
 
