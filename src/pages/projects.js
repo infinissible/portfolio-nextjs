@@ -5,12 +5,44 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import project1 from '../../public/images/projects/crypto-screener-cover-image.jpg';
+import freelancr from '../../public/images/projects/freelancr.png';
+import techNews from '../../public/images/projects/tech-news.png';
+import wedding from '../../public/images/projects/wedding.png';
+import mongodb from '../../public/images/Icons/mongodb.png';
+import react from '../../public/images/Icons/react.png';
+import graphql from '../../public/images/Icons/graphql.png';
+import java from '../../public/images/Icons/java.png';
+import spring from '../../public/images/Icons/spring.png';
+import mysql from '../../public/images/Icons/mysql.png';
+import js from '../../public/images/Icons/js.png';
 import { motion } from 'framer-motion';
 
 const FramerImage = motion(Image);
 
-const FeaturedProject = ({ type, title, summary, img, link, github }) => {
+const SkillIcons = ({ name, src, className }) => {
+  return (
+    <div className='group relative flex justify-center'>
+      <div
+        className={`w-14 h-14 sm:w-10 sm:h-10 border-2 border-white  overflow-hidden bg-fill bg-white mr-2 transition-all hover:scale-[1.1] ${className}`}
+      >
+        <Image src={src} alt={name} />
+      </div>
+      <span className='absolute -bottom-5 text-center z-50 bg-gray-500 text-white rounded mr-2 px-2 opacity-0 group-hover:opacity-100 transition-all font-medium sm:text-sm whitespace-nowrap'>
+        {name}
+      </span>
+    </div>
+  );
+};
+
+const FeaturedProject = ({
+  type,
+  title,
+  summary,
+  img,
+  link,
+  github,
+  props,
+}) => {
   return (
     <article className='w-full flex items-center justify-between relative rounded-br-2xl rounded-3xl border border-solid border-dark bg-light shadow-2xl p-12 dark:bg-dark dark:border-light lg:flex-col lg:p-8 xs:rounded-2xl xs:rounded-br-3xl xs:p-4'>
       <div className='absolute top-0 -right-3 -z-10 w-[101%] h-[103%] rounded-[2.5rem] bg-dark dark:bg-light rounded-br-3xl xs:-right-2 sm:h-[102%] xs:w-full xs:rounded-[1.5rem]' />
@@ -43,17 +75,24 @@ const FeaturedProject = ({ type, title, summary, img, link, github }) => {
             {title}
           </h2>
         </Link>
+        <div className='flex justify-start'></div>
         <p className='my-2 font-medium text-dark dark:text-light sm:text-sm'>
           {summary}
         </p>
+        <div className='flex justify-start my-2'>
+          {props.map(({ name, src }, index) => (
+            <SkillIcons src={src} name={name} key={index} />
+          ))}
+        </div>
+
         <div className='mt-2 flex items-center'>
           <Link href={github} target='_blank' className='w-10'>
-            <GithubIcon />
+            <GithubIcon className='hover:scale-[1.1] transition-all' />
           </Link>
           <Link
             href={link}
             target='_blank'
-            className='ml-4 rounded-lg bg-dark text-light p-2 px-6 text-lg font-semibold dark:bg-light dark:text-dark sm:px-4 sm:text-base'
+            className='ml-4 rounded-lg bg-dark text-light p-2 px-6 text-lg font-semibold dark:bg-light dark:text-dark sm:px-4 sm:text-base hover:scale-[1.1] transition-all'
           >
             Visit Project
           </Link>
@@ -63,7 +102,7 @@ const FeaturedProject = ({ type, title, summary, img, link, github }) => {
   );
 };
 
-const Project = ({ title, type, img, link, github }) => {
+const Project = ({ title, type, summary, img, link, github, props }) => {
   return (
     <article className='w-full flex flex-col items-center justify-center rounded-2xl border border-solid border-dark bg-light p-6 relative dark:bg-dark dark:border-light xs:p-4'>
       <div className='absolute top-0 -right-3 -z-10 w-[101%] h-[103%] rounded-[2rem] bg-dark dark:bg-light rounded-br-3xl md:-right-2 md:w-[101%] xs:h-[102%] xs:rounded-[1.5rem]' />
@@ -95,17 +134,24 @@ const Project = ({ title, type, img, link, github }) => {
             {title}
           </h2>
         </Link>
-
+        <p className='my-2 font-medium text-dark dark:text-light sm:text-sm'>
+          {summary}
+        </p>
+        <div className='flex justify-start my-2'>
+          {props.map(({ name, src }, index) => (
+            <SkillIcons src={src} name={name} key={index} />
+          ))}
+        </div>
         <div className='w-full mt-2 flex items-center justify-between'>
+          <Link href={github} target='_blank' className='w-8 md:w-6'>
+            <GithubIcon className='hover:scale-[1.1] transition-all' />
+          </Link>
           <Link
             href={link}
             target='_blank'
-            className='text-lg font-semibold underline md:text-base'
+            className='rounded-lg bg-dark text-light p-2 px-6 text-lg font-semibold dark:bg-light dark:text-dark sm:px-4 sm:text-base hover:scale-[1.1] transition-all'
           >
-            Visit
-          </Link>
-          <Link href={github} target='_blank' className='w-8 md:w-6'>
-            <GithubIcon />
+            Visit Project
           </Link>
         </div>
       </div>
@@ -114,13 +160,27 @@ const Project = ({ title, type, img, link, github }) => {
 };
 
 const projects = () => {
+  const project1 = [
+    { src: js, name: 'JavaScript' },
+    { src: react, name: 'React' },
+    { src: mongodb, name: 'MongoDB' },
+    { src: graphql, name: 'GraphQL' },
+  ];
+  const project2 = [
+    { src: java, name: 'Java' },
+    { src: spring, name: 'Spring Boot' },
+    { src: mysql, name: 'MySQL' },
+  ];
+  const project3 = [
+    { src: js, name: 'JavaScript' },
+    { src: react, name: 'React' },
+  ];
   return (
     <>
       <Head>
         <title>Jinventor | Projects Page</title>
         <meta name='description' content='any description' />
       </Head>
-      {/* <TransitionEffect /> */}
 
       <main className='w-full mb-16 flex flex-col items-center justify-center dark:text-light'>
         <Layout className='pt-16'>
@@ -132,74 +192,35 @@ const projects = () => {
           <div className='grid grid-cols-12 gap-24 gap-y-32 xl:gap-x-16 lg:gap-x-8 md:gap-y-24 sm:gap-x-0'>
             <div className='col-span-12'>
               <FeaturedProject
-                title='Crypto Screener Application'
-                img={project1}
-                summary='A feature-rich Crypto Screener App using React, Tailwind CSS, Context API, React Router and Recharts. 
-            It shows detail regarding almost all the cryptocurrency. You can easily convert the price in your 
-            local currency.'
-                link='/'
-                github='/'
-                type='Featured Projec'
+                title='FREELANCR'
+                img={freelancr}
+                summary='A MERN stack single-page application that works with a focus on data and user demand. This project is performed with JavaScript, MongoDB databases, React, GraphQL APIs, and JSON web token(JWT) authentication. '
+                link='https://gig-freelancr.herokuapp.com/'
+                github='https://github.com/infinissible/freelancr-gig'
+                type='Featured Project'
+                props={project1}
               />
             </div>
             <div className='col-span-6 sm:col-span-12'>
               <Project
-                title='Crypto Screener Application'
-                img={project1}
-                summary='A feature-rich Crypto Screener App using React, Tailwind CSS, Context API, React Router and Recharts. 
-            It shows detail regarding almost all the cryptocurrency. You can easily convert the price in your 
-            local currency.'
-                link='/'
-                github='/'
-                type='Featured Projec'
+                title='Newsfeed-Java-API'
+                img={techNews}
+                summary='A social news site, Just Tech News, builded with Java Spring Boot framework for RestfulAPIs. Building a Spring Boot API with creating CRUD operations with Spring Data JPA and MySQL database'
+                link='https://javatechnews-api.herokuapp.com/'
+                github='https://github.com/infinissible/tech-news-java-api'
+                type='Personal Project'
+                props={project2}
               />
             </div>
             <div className='col-span-6 sm:col-span-12'>
               <Project
-                title='Crypto Screener Application'
-                img={project1}
-                summary='A feature-rich Crypto Screener App using React, Tailwind CSS, Context API, React Router and Recharts. 
-            It shows detail regarding almost all the cryptocurrency. You can easily convert the price in your 
-            local currency.'
-                link='/'
-                github='/'
-                type='Featured Projec'
-              />
-            </div>
-            <div className='col-span-12'>
-              <FeaturedProject
-                title='Crypto Screener Application'
-                img={project1}
-                summary='A feature-rich Crypto Screener App using React, Tailwind CSS, Context API, React Router and Recharts. 
-            It shows detail regarding almost all the cryptocurrency. You can easily convert the price in your 
-            local currency.'
-                link='/'
-                github='/'
-                type='Featured Projec'
-              />
-            </div>
-            <div className='col-span-6 sm:col-span-12'>
-              <Project
-                title='Crypto Screener Application'
-                img={project1}
-                summary='A feature-rich Crypto Screener App using React, Tailwind CSS, Context API, React Router and Recharts. 
-            It shows detail regarding almost all the cryptocurrency. You can easily convert the price in your 
-            local currency.'
-                link='/'
-                github='/'
-                type='Featured Projec'
-              />
-            </div>
-            <div className='col-span-6 sm:col-span-12'>
-              <Project
-                title='Crypto Screener Application'
-                img={project1}
-                summary='A feature-rich Crypto Screener App using React, Tailwind CSS, Context API, React Router and Recharts. 
-            It shows detail regarding almost all the cryptocurrency. You can easily convert the price in your 
-            local currency.'
-                link='/'
-                github='/'
-                type='Featured Projec'
+                title='My-wedding-invitation'
+                img={wedding}
+                summary='A personal wedding invitation as a single-page application built with Reac.js. It is designed for the mobile-friendly interface including a photo gallery with react-responsive-carousel, an API of NAVER MAP'
+                link='https://infinissible.github.io/my-wedding-invitation/'
+                github='https://github.com/infinissible/my-wedding-invitation'
+                type='Mobile-friendly wedding invitation'
+                props={project3}
               />
             </div>
           </div>
